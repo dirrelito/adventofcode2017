@@ -1,6 +1,25 @@
-import { getCoords, getNeighbors, manhattanDistance } from './lib';
+import { copyBoard, fillBBoard, getAnsB, getCoords, getNeighbors, getNum, manhattanDistance, setNum } from './lib';
 
 describe(' Day 3' , () => {
+
+    it('A part test suite', () => {
+        const f = x => manhattanDistance(getCoords(x));
+        expect(f(1)).toBe(0);
+        expect(f(12)).toBe(3);
+        expect(f(23)).toBe(2);
+        expect(f(1024)).toBe(31);
+    });
+
+    it('B part test suite', () => {
+        const b = fillBBoard(setNum(new Map())({x: 0, y: 0})(1))(5);
+        const f = x => getNum(b)(getCoords(x));
+        // console.log(b)
+        expect(f(1)).toBe(1);
+        expect(f(2)).toBe(1);
+        expect(f(3)).toBe(2);
+        expect(f(4)).toBe(4);
+        expect(f(5)).toBe(5);
+    });
 
     it('Neighbors', () => {
         expect(getNeighbors({x: 3, y: 3})).toEqual([
@@ -17,6 +36,17 @@ describe(' Day 3' , () => {
 
     it('manhattan', () => {
         expect(manhattanDistance({x: 3, y: -10})).toBe(13);
+    });
+
+    it('copyBoard', () => {
+        const b1 = new Map();
+        b1.set(1, new Map([[1, 11]]));
+        b1.set(1, new Map([[2, 12]]));
+        b1.set(2, new Map([[1, 21]]));
+        b1.set(2, new Map([[2, 22]]));
+        const b2 = copyBoard(b1);
+        expect(b2).toEqual(b1);
+        expect(b1 === b2).toBeFalsy();
     });
 
     describe('getCoords', () => {
