@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import {findEvenDivision, map2, processA, rowDiff, strToNumSheet, summer} from './lib';
+import {findEvenDivision, map2, processA, processB, rowDiff, strToNumSheet, summer} from './lib';
 
 describe('Day 2', () => {
 
@@ -7,6 +7,11 @@ describe('Day 2', () => {
         const data = fs.readFileSync('./2/testA.txt', 'utf8').trim();
         const res = processA(data);
         expect(res).toBe(18);
+    });
+    it('B', () => {
+        const data = fs.readFileSync('./2/testB.txt', 'utf8').trim();
+        const res = processB(data);
+        expect(res).toBe(9);
     });
 
     it('rowDiff happy path', () => {

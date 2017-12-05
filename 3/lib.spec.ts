@@ -1,4 +1,4 @@
-import { copyBoard, fillBBoard, getAnsB, getCoords, getNeighbors, getNum, manhattanDistance, setNum } from './lib';
+import { copyBoard, fillBBoard, getCoords, getNeighbors, getNum, manhattanDistance, setNum } from './lib';
 
 describe(' Day 3' , () => {
 
@@ -47,6 +47,26 @@ describe(' Day 3' , () => {
         const b2 = copyBoard(b1);
         expect(b2).toEqual(b1);
         expect(b1 === b2).toBeFalsy();
+    });
+
+    describe('fillBBoard', () => {
+        it('fillBBoard rejects crap', () => {
+            const f = () => fillBBoard(setNum(new Map())({x: 0, y: 0})(0))(5);
+            expect(f).toThrow();
+        });
+
+        it('can refill on existing board', () => {
+            const b1 = fillBBoard(setNum(new Map())({x: 0, y: 0})(1))(5);
+            let t = process.hrtime();
+            const b2 = fillBBoard(b1)(30);
+            const t1 = process.hrtime(t);
+            t = process.hrtime();
+            const b3 = fillBBoard(setNum(new Map())({x: 0, y: 0})(1))(31);
+            const t2 = process.hrtime(t);
+            const time1 = t1[0] * 1000000000 + t1[1];
+            const time2 = t2[0] * 1000000000 + t2[1];
+            expect(time1).toBeGreaterThan(time2 * 0.6); // one should save 30% min
+        });
     });
 
     describe('getCoords', () => {

@@ -15,6 +15,10 @@ export const processB = (rawSheet: string) => {
     const numSheet = strToNumSheet(rawSheet);
     const sumContributions = numSheet.map(findEvenDivision);
     const sum = sumContributions.reduce(summer);
+    // console.log('raw:', rawSheet)
+    // console.log('nums:', numSheet)
+    // console.log('sumC:', sumContributions)
+    // console.log('sum:', sum)
     return sum;
 };
 

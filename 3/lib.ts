@@ -11,8 +11,8 @@ export const getCoords = (ord: number) => {
     if (side === 1) {return {x: radius, y: tangent };
     } else if (side === 2) {return {x: -tangent , y: radius};
     } else if (side === 3) {return {x: -radius, y: -tangent};
-    } else if (side === 4) {return {x: tangent, y: -radius };
-    } else { throw new Error('Logic error!'); }
+    } else {return {x: tangent, y: -radius };
+    }
 };
 
 export const manhattanDistance = (c: Coordinate) => Math.abs(c.x) + Math.abs(c.y) ;
@@ -47,17 +47,6 @@ const getNeighborsSum = board => coord => getNeighbors(coord)
     .map(coords => getNum(board)(coords))
     .reduce((a, b) => a + b, 0);
 
-const showBoard = board => lim => {
-    let out = '';
-    for (let y = lim; y > -lim; y--) {
-        for (let x = -lim; x < lim; x++) {
-            out = out + ' ' + getNum(board)({x, y}) + '\t';
-        }
-        out = out + '\n';
-    }
-    return out;
-};
-
 export const fillBBoard = (board: Board) =>  ordMax => {
     if (getNum(board)({x: 0, y: 0}) === 0) { throw new Error('Bad board!'); }
 
@@ -69,18 +58,6 @@ export const fillBBoard = (board: Board) =>  ordMax => {
         }
     }
     return board;
-};
-
-export const getAnsB = thresh => {
-    let board = new Map();
-    board = setNum(board)({x: 0, y: 0})(1);
-    for (let i = 2; i < 100000 ; i++) {
-        const c = getCoords(i);
-        const val = getNeighborsSum(board)(c);
-        if (val > thresh) { return val; }
-        board = setNum(board)(c)(val);
-    }
-    throw new Error('Exceeded max comp stack');
 };
 
 export const getNeighbors = (c: Coordinate) => {

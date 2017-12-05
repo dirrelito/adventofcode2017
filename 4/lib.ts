@@ -1,4 +1,4 @@
-export const isValid = checker => raw => {
+export const isValid = checker => (raw: string) => {
     const words = raw.split(/\s+/);
     const count = words.reduce(checker, {set: new Set(), count: 0}).count;
     return count === 0;
@@ -18,9 +18,5 @@ export const checkerB = (prevAcc, nextWord) => {
 };
 
 const sortStrChars = (str: string) => {
-    if (!str) {
-        return;
-    }
-    const str2 = str.split('').sort().join('');
-    return str2;
+    return str.split('').sort().join('');
 };

@@ -7,12 +7,8 @@ describe('Day 1', () => {
 
     beforeAll(done => {
         fs.readFile('./1/testData.json', 'utf8', (err, data) => {
-            if (err) {
-                throw err;
-            } else {
-                testData = JSON.parse(data).caseA;
-                testDataB = JSON.parse(data).caseB;
-            }
+            testData = JSON.parse(data).caseA;
+            testDataB = JSON.parse(data).caseB;
             done();
         });
     });

@@ -5,7 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "start": "ts-node index.ts",
-    "test": "jasmine-ts \"./**/*.spec.ts\""
+    "test": "jasmine-ts \"./**/*.spec.ts\"",
+    "test-and-cover": "nyc  -r lcov -e .ts -x \"*.spec.ts\" jasmine-ts \"./**/*.spec.ts\""
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "@types/jasmine": "^2.8.2",
     "jasmine": "^2.8.0",
     "jasmine-ts": "^0.2.1",
+    "nyc": "^11.3.0",
     "tslint": "^5.8.0"
   }
 }

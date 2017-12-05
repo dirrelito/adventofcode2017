@@ -1,1 +1,5 @@
 node_modules/*
+
+# istanbul output
+.nyc_output/*
+coverage/*
