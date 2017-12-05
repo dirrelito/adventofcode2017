@@ -3,7 +3,7 @@ import * as readline from 'readline';
 
 const inInterval = startInt => endInt => testInt => testInt >= startInt && testInt <= endInt;
 
-const rl = readline.createInterface({
+const prompt = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
 });
@@ -52,19 +52,18 @@ async function getAvailableDays() {
 async function askAndRunDay() {
     const days = await getAvailableDays();
     const message =
-`Please select a date to run the program for
-Available days are: ${days}
+    'Please select a date to run the program for\n' +
+    `Available days are: ${days}\n\n` +
+    '>> ';
 
->> `;
-
-    rl.question(message, (answer: string) => {
+    prompt.question(message, (answer: string) => {
         const num = parseInt(answer, 10);
         if (days.indexOf(num.toString()) !== -1) {
-            import(`./${num}/index.ts`).then(i => {
-                i.main();
+            import(`./${num}/index.ts`).then(importedDayModule => {
+                importedDayModule.main();
             });
         }
-        rl.close();
+        prompt.close();
     });
 }
 
