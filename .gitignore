@@ -3,3 +3,6 @@ node_modules/*
 # istanbul output
 .nyc_output/*
 coverage/*
+
+# viual studio code stuff shouldnt be commited
+.vscode
