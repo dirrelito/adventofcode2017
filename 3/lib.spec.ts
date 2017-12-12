@@ -13,7 +13,6 @@ describe(' Day 3' , () => {
     it('B part test suite', () => {
         const b = fillBBoard(setNum(new Map())({x: 0, y: 0})(1))(5);
         const f = x => getNum(b)(getCoords(x));
-        // console.log(b)
         expect(f(1)).toBe(1);
         expect(f(2)).toBe(1);
         expect(f(3)).toBe(2);

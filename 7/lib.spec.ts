@@ -21,7 +21,6 @@ describe('Day 7', () => {
     it('Test A', () => {
         const data = fs.readFileSync('./7/testInputA.txt', 'utf8').trim().split(/\r?\n/);
         const rawProgs = data.map(parseProgram);
-        // console.log(rawProgs)
         const p1 = rawProgs.find(p => p.name === 'fwft');
         expect(p1.weight).toBe(72);
         expect(p1.name).toBe('fwft');
