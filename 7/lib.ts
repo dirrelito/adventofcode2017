@@ -3,7 +3,8 @@ export const parseProgram = (line: string) => {
     const regex1 = /(\w+)\s\((\d+)\)/;
     const m = a.match(regex1);
     const discNames = b ? b.split(', ') : [];
-    return {name: m[1], weight: parseInt(m[2]), discNames} as program;
+    const p: program = {name: m[1], weight: parseInt(m[2], 10), discNames};
+    return p;
 };
 
 export const getDiscHolder = (allProgs: program[]) => (prog: program) => {
