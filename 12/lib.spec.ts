@@ -59,7 +59,6 @@ describe('Day 12', () => {
         const grps = groups.map(s => [...s].sort().toString());
         const distincts = grps.filter((v, i, a) => a.indexOf(v) === i);
 
-        console.log(distincts);
         expect(distincts.length).toEqual(2);
     });
 

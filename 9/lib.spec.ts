@@ -3,7 +3,7 @@ import { measureGarbage, node, parseGarbage, parseStream, scoreStream } from './
 const rawGarbage = ['<>', '<random characters>', '<<<<>', '<{!>}>', '<!!>', '<!!!>>', '<{o"i!a,<{i<a>'];
 const garbScores = [0, 17, 3, 2, 0, 0, 10];
 
-fdescribe('Day9', () => {
+describe('Day9', () => {
 
     it('garbage Scoring', () => {
         const g: node = {kind: 'garbage', content: 'i should give 0 pts'};
