@@ -2,16 +2,16 @@ export const parseProgram = (line: string) => {
     const [a, b] = line.split(' -> ');
     const regex1 = /(\w+)\s\((\d+)\)/;
     const m = a.match(regex1);
-    const discNames = b ? b.split(', ') : [];
-    const p: program = {name: m[1], weight: parseInt(m[2], 10), discNames};
+    const programsOnDisc = b ? b.split(', ') : [];
+    const p: program = {name: m[1], weight: parseInt(m[2], 10), programsOnDisc};
     return p;
 };
 
 export const getDiscHolder = (allProgs: program[]) => (prog: program) => {
-    return allProgs.find(p => p.discNames.indexOf(prog.name) !== -1);
+    return allProgs.find(p => p.programsOnDisc.indexOf(prog.name) !== -1);
 };
 
-export const getRoot = (allProgs: program[]) => {
+export const findRoot = (allProgs: program[]) => {
     let p = allProgs[0];
     const f = getDiscHolder(allProgs);
     while (true) {
@@ -24,20 +24,20 @@ export const getRoot = (allProgs: program[]) => {
     }
 };
 
-export const buildTree = (progs: program[]) => (root: program) => {
-    const getTreeForName = name => buildTree(progs)(progs.find(p => p.name === name));
-    const disc: programNode[] = root.discNames.map(getTreeForName);
-    const n: programNode = {name: root.name, weight: root.weight, disc };
+export const buildTower = (progs: program[]) => (root: program) => {
+    const getTreeForName = name => buildTower(progs)(progs.find(p => p.name === name));
+    const programsOnDisc: programInTower[] = root.programsOnDisc.map(getTreeForName);
+    const n: programInTower = {name: root.name, weight: root.weight, programsOnDisc };
     return n;
 };
 
-export const findWrongVal: (t: programNode, expectedVal?: number) => number =
-    (t: programNode, expectedVal?: number) => {
-        if (t.disc.length >= 3) {
-            const totVals = t.disc.map(n => getTotVal(n));
+export const findWrongVal: (t: programInTower, expectedVal?: number) => number =
+    (t: programInTower, expectedVal?: number) => {
+        if (t.programsOnDisc.length >= 3) {
+            const totVals = t.programsOnDisc.map(n => getTotVal(n));
             const oRes = findOdd(totVals);
             if (oRes) {
-                return findWrongVal(t.disc[oRes.badI], oRes.expectedVal);
+                return findWrongVal(t.programsOnDisc[oRes.badI], oRes.expectedVal);
             } else {
                 const discWeight = totVals.reduce((a, b) => a + b);
                 return expectedVal - discWeight;
@@ -83,11 +83,11 @@ export const findOdd = (arr: number[]) => {
 
 };
 
-const getTotVal = (n: programNode) => {
-    const childrenW: number[] = n.disc.map(p => getTotVal(p));
+const getTotVal = (n: programInTower) => {
+    const childrenW: number[] = n.programsOnDisc.map(p => getTotVal(p));
     const subW = childrenW.reduce((prev, curr) => prev + curr, 0);
     return n.weight + subW;
 };
 
-type program = {name, weight, discNames: string[]};
-type programNode = {name: string, weight: number, disc: programNode[]}; // this is a rose tree! :)
+type program = {name, weight, programsOnDisc: string[]};
+type programInTower = {name: string, weight: number, programsOnDisc: programInTower[]}; // this is a rose tree! :)

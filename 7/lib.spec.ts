@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { buildTree, findOdd, findWrongVal, getDiscHolder, getRoot, parseProgram } from './lib';
+import { buildTower, findOdd, findRoot, findWrongVal, getDiscHolder, parseProgram } from './lib';
 
 describe('Day 7', () => {
 
@@ -7,14 +7,14 @@ describe('Day 7', () => {
         const input = 'asdf (10) -> wqerty, abba1';
         const prog = parseProgram(input);
         expect(prog).toEqual(
-            {name: 'asdf', weight: 10, discNames: ['wqerty', 'abba1']},
+            {name: 'asdf', weight: 10, programsOnDisc: ['wqerty', 'abba1']},
         );
     });
     it('parses simple line 2', () => {
         const input = 'asdf (10)';
         const prog = parseProgram(input);
         expect(prog).toEqual(
-            {name: 'asdf', weight: 10, discNames: []},
+            {name: 'asdf', weight: 10, programsOnDisc: []},
         );
     });
 
@@ -24,12 +24,12 @@ describe('Day 7', () => {
         const p1 = rawProgs.find(p => p.name === 'fwft');
         expect(p1.weight).toBe(72);
         expect(p1.name).toBe('fwft');
-        expect(p1.discNames).toEqual([ 'ktlj', 'cntj', 'xhth']);
+        expect(p1.programsOnDisc).toEqual([ 'ktlj', 'cntj', 'xhth']);
 
         const f = getDiscHolder(rawProgs);
         expect(f(p1).name).toBe('tknk');
 
-        const r = getRoot(rawProgs);
+        const r = findRoot(rawProgs);
         expect(r.name).toBe('tknk');
 
     });
@@ -37,8 +37,8 @@ describe('Day 7', () => {
     it('Build trees and test B', () => {
         const data = fs.readFileSync('./7/testInputA.txt', 'utf8').trim().split(/\r?\n/);
         const rawProgs = data.map(parseProgram);
-        const r = getRoot(rawProgs);
-        const t = buildTree(rawProgs)(r);
+        const r = findRoot(rawProgs);
+        const t = buildTower(rawProgs)(r);
         const f = findWrongVal(t);
         expect(f).toBe(60);
 
