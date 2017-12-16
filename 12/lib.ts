@@ -1,15 +1,17 @@
-export const processLine = line => {
+export const processLine = (line: string) => {
   const arr = line
       .trim()
       .split(' <-> ');
   const from = arr[0];
   const tos = arr[1].split(', ');
-  const links = tos.map(to => ({from, to}));
+  const links: Array<edge<string>> = tos.map(to => ({from, to}));
   return links;
 };
 
 export const getNeighbors = edges => node => edges.filter(edge1 => edge1.from === node).map(edge2 => edge2.to);
-export const parseFile = rawData => rawData.trim().split(/\r?\n/).map(processLine).reduce((a, b) => a.concat(b), []);
+
+export const parseFile = (rawData => rawData.trim().split(/\r?\n/).map(processLine).reduce((a, b) => a.concat(b), [])
+    ) as (rawData: string) => Array<edge<string>>;
 
 export const travelGraph = <T>(edges: Array<edge<T>>) => (visited: Set<T>) => (toVisit: T[]) => {
   if (toVisit == null || toVisit.length === 0) {
