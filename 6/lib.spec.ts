@@ -5,43 +5,43 @@ const dataA = [0, 2, 7, 0];
 describe('Day 6', () => {
     it('Test case A - step by step', () => {
         const max = Math.max(...dataA);
-        const maxIndex = dataA.indexOf(max);
-        const size = dataA.length;
-        let m: Memory = {size, maxIndex, memState: dataA};
+        const indexOfMax = dataA.indexOf(max);
+        const memorySize = dataA.length;
+        let m: Memory = {memorySize, indexOfMax, memoryState: dataA};
         expect(m).toEqual({
-            size: 4,
-            maxIndex: 2,
-            memState: [0, 2, 7, 0],
+            memorySize: 4,
+            indexOfMax: 2,
+            memoryState: [0, 2, 7, 0],
         });
         m = step(m);
         expect(m).toEqual({
-            size: 4,
-            maxIndex: 1,
-            memState: [2, 4, 1, 2],
+            memorySize: 4,
+            indexOfMax: 1,
+            memoryState: [2, 4, 1, 2],
         });
         m = step(m);
         expect(m).toEqual({
-            size: 4,
-            maxIndex: 0,
-            memState: [3, 1, 2, 3],
+            memorySize: 4,
+            indexOfMax: 0,
+            memoryState: [3, 1, 2, 3],
         });
         m = step(m);
         expect(m).toEqual({
-            size: 4,
-            maxIndex: 3,
-            memState: [0, 2, 3, 4],
+            memorySize: 4,
+            indexOfMax: 3,
+            memoryState: [0, 2, 3, 4],
         });
         m = step(m);
         expect(m).toEqual({
-            size: 4,
-            maxIndex: 2,
-            memState: [1, 3, 4, 1],
+            memorySize: 4,
+            indexOfMax: 2,
+            memoryState: [1, 3, 4, 1],
         });
         m = step(m);
         expect(m).toEqual({
-            size: 4,
-            maxIndex: 1,
-            memState: [2, 4, 1, 2],
+            memorySize: 4,
+            indexOfMax: 1,
+            memoryState: [2, 4, 1, 2],
         });
     });
 
