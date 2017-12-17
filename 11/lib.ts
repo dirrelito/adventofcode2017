@@ -1,5 +1,9 @@
-// see https://www.redblobgames.com/grids/hexagons/ for guides on hexagonal geometry and coordinate systems
-// N.B. flat topped hexagonal grid is used!
+/*
+see https://www.redblobgames.com/grids/hexagons/ for guides on hexagonal geometry and coordinate systems
+N.B. flat topped hexagonal grid is used!
+one should scrap the cubic grid altogether and only work in axial grid.
+conversions are not good for anything. it simply bloats the code.
+*/
 const abs = Math.abs;
 
 export const hexDistance = (a: cubicCoordinate) => (b: cubicCoordinate) => {
