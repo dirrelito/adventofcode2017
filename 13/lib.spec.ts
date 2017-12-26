@@ -6,7 +6,7 @@ const input =
 4: 4
 6: 4
 `;
-fdescribe('Day 13', () => {
+describe('Day 13', () => {
     it('Parse Input', () => {
         const a = parseFirewall(input);
         expect(a).toEqual([ { depth: 0, range: 3 },
