@@ -61,6 +61,6 @@ export const knotHash = (input: string) => {
     const b = repeat(knotHashRound(data))(64)(kHS);
     const sparseHash = b.list;
     const c = chunk(16)(b.list);
-    const denseHash = c.map(bitXorReduce).map(dec => ('00' + dec.toString(16)).substr(-2)).join('');
+    const denseHash: string = c.map(bitXorReduce).map(dec => ('00' + dec.toString(16)).substr(-2)).join('');
     return denseHash;
 };
