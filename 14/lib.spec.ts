@@ -1,14 +1,14 @@
 import { knotHash, take } from '../10/lib';
 import { range } from '../util/lib';
 import { concatMap, diskState, generateHashDisk, getUnlabelledCoords, hexCharToBinArray,
-     sumFromDiskState, 
-     regionMaxNo,
+     labelNewRegion,
      labelRegion,
-     labelNewRegion} from './lib';
+     regionMaxNo,
+     sumFromDiskState} from './lib';
 
 const input = 'flqrgnkx';
 
-fdescribe('Day 14', () => {
+describe('Day 14', () => {
 
     describe('hex2bin', () => {
         it('1', () => { expect(hexCharToBinArray('1')).toEqual(['0','0','0','1']); });
