@@ -1,3 +1,4 @@
+import { assertNever } from '../util/lib';
 
 export const parseRow = (row: string) => {
     const [instr, crit] = row.split(' if ');
@@ -54,7 +55,7 @@ export const applyInstr = (obj: state) => (instr: instruction) => {
         case '!=':
            shouldApply = compVal !== instr.comparison.level; break;
         default:
-            const exhaustiveCheck: never = instr.comparison.op;
+            assertNever(instr.comparison.op);
     }
 
     if (shouldApply) {

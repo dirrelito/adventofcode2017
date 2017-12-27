@@ -1,3 +1,5 @@
+import { assertNever } from '../util/lib';
+
 /*
 see https://www.redblobgames.com/grids/hexagons/ for guides on hexagonal geometry and coordinate systems
 N.B. flat topped hexagonal grid is used!
@@ -36,8 +38,7 @@ export const stepAxial = (a: axialCoordinate) => (d: direction) => {
     } else if (d === 'nw') {
         b.x--;
     } else {
-        const exhaustivenessCheck: never = d;
-        throw new Error(`Bad input: ${d} is not a direction.`);
+        assertNever(d);
     }
     const c: axialCoordinate = vectorAdd(a)(b);
     return c;
