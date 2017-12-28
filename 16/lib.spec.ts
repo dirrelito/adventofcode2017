@@ -1,7 +1,7 @@
 import {stream} from 'parser-combinator';
 import { dance1, danceMove, exchangeParser, moveParser, partnerParser, program, spinParser, moveListParser, parseDanceMoves, findCycleLength, shortCircuitDanceNTimes } from './lib';
 
-fdescribe('Day 16', () => {
+describe('Day 16', () => {
     describe('Dance1', () => {
         it('spin', () => {
             const d: program[] = ['a','b','c','d','e'];
