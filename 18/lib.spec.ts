@@ -9,7 +9,7 @@ rcv b
 rcv c
 rcv d`;
 
-fdescribe('Day 18', () => {
+describe('Day 18', () => {
     describe('Case A', ()=> {
         it('Whole case', ()=> {
             const raw = readFileSync('./18/testA.txt', 'utf8');
@@ -57,7 +57,7 @@ jgz 9 1`;
         expect(a).toBe(3);
     });
 
-    fit('Prog1 of B', () => {
+    it('Prog1 of B', () => {
         const cmdsB: string[] = rawB.trim().split(/\r?\n/);
         const prog0Before: programState = {
             commands: cmdsB,
