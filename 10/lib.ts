@@ -1,6 +1,8 @@
+import { range } from '../util/lib';
+
 export const parseIntList = (raw: string) => raw.split(',').map(n => parseInt(n, 10));
 export const take = <T>(arr: T[]) => (n: number) => arr.slice(0, n);
-export const makeLoop = nrOfItems => [...Array(nrOfItems).keys()];
+export const makeLoop = n => range(0)(n-1);
 type knotHashString = { list: number[], currentPosition: number, skipSize: number};
 
 export const shiftLoop = (arr: number[]) => (rawShift: number) => {
