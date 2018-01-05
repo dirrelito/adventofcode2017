@@ -1,4 +1,4 @@
-import { map2, sum, chunk } from '../util/lib';
+import { chunk, map2, sum } from '../util/lib';
 
 export const parseStringMappings = (raw: string): Array<[string,string]> =>
     raw.trim()
