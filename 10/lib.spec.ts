@@ -1,4 +1,4 @@
-import { bitXorReduce, chunk, knotHash, knotHashRound, makeLoop, parseAsciiInput, parseIntList, repeat,
+import { bitXorReduce, knotHash, knotHashRound, makeLoop, parseAsciiInput, parseIntList, repeat,
      shiftLoop, stepOne, take, twistSubLoop } from './lib';
 
 describe('Day 10', () => {
@@ -51,10 +51,6 @@ describe('Day 10', () => {
         const f = (i: number) => i+1;
         const a = repeat(f)(10)(0);
         expect(a).toBe(10);
-    });
-
-    it('chunks', () => {
-        expect(chunk(3)([1,2,3,4,5,6,7])).toEqual([[1,2,3],[4,5,6],[7]]);
     });
 
     describe('Test cases in A input', () => {

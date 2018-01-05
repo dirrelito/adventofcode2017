@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import {findEvenDivision, map2, processA, processB, rowDiff, strToNumSheet, summer} from './lib';
+import {findEvenDivision, processA, processB, rowDiff, strToNumSheet} from './lib';
 
 describe('Day 2', () => {
 
@@ -18,14 +18,6 @@ describe('Day 2', () => {
         expect(rowDiff([1, 2, 3, 4, 5])).toBe(5 - 1);
         expect(rowDiff([9, 2, 3, 4, 5])).toBe(9 - 2);
         expect(rowDiff([9, 7, 3])).toBe(9 - 3);
-    });
-
-    it('map2 happy path', () => {
-        expect(map2(x => x + 1)([[1, 4, 5], [9, 2]])).toEqual([[2, 5, 6], [10, 3]]);
-    });
-
-    it('summer happy', () => {
-        expect([1, 2, 3].reduce(summer)).toBe(6);
     });
 
     it('parseSheet happy', () => {

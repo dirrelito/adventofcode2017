@@ -1,4 +1,4 @@
-import { range } from '../util/lib';
+import { chunk, range } from '../util/lib';
 
 export const parseIntList = (raw: string) => raw.split(',').map(n => parseInt(n, 10));
 export const take = <T>(arr: T[]) => (n: number) => arr.slice(0, n);
@@ -43,16 +43,6 @@ export const parseAsciiInput = (s: string) => s.split('').map(v => v.charCodeAt(
 export const repeat = <T>(f: (a: T)=>T) => (t: number) => (a: T) => {
     const ret: T = t > 0 ? repeat(f)(t - 1)(f(a)) : a;
     return ret;
-};
-
-export const chunk = (size: number) => arr => {
-    const res = arr.reduce((acc, curr, i) => {
-        if (!(i % size)) {
-          acc.push(arr.slice(i, i + size));
-        }
-        return acc;
-      }, []);
-    return res;
 };
 
 export const bitXorReduce = (nums: number[]) => nums.reduce((acc,curr) => acc ^ curr);
