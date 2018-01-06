@@ -1,4 +1,4 @@
-import { chunk, map2, sum } from '../util/lib';
+import { chunk, flatten, map2, sum } from '../util/lib';
 
 export const parseStringMappings = (raw: string): Array<[string,string]> =>
     raw.trim()
@@ -141,16 +141,6 @@ export const uniquesBy = <T,S extends (number|boolean|string)>(identifier: (tmp:
                 .map(o => o.t);
     return uniques;
 };
-
-export const zip = <T,S>(ts: T[], ss: S[]): Array<[T,S]> => {
-    if(ts.length !== ss.length) { throw new Error(); }
-    const ret = ts.map((_,i) => [ts[i],ss[i]] as [T,S]);
-    return ret;
-};
-
-export const flatten = <T>(arrs: T[][]): T[] => [].concat(...arrs);
-
-export const some = (arr: boolean[]) => arr.reduce((prev,curr) => prev || curr);
 
 export const chunk2D = <T>(arrs: T[][], miniSize: number): T[][][][] => {
     const ret1 = arrs.map(row => chunk(miniSize)(row));

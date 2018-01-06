@@ -20,3 +20,17 @@ export const chunk = (size: number) => arr => {
         }, []);
     return res;
 };
+
+export const flatten = <T>(arrs: T[][]): T[] => [].concat(...arrs);
+
+export const applyNTimes = <T>(f: (a: T) => T) => (n: number) => (t: T): T => {
+    if (n <= 0) {
+        return t;
+    } else {
+        let tmp = t;
+        for (let i = 0; i < n; i++) {
+            tmp = f(tmp);
+        }
+        return tmp;
+    }
+};

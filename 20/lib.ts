@@ -63,15 +63,3 @@ export const groupBy = <T,S>(list: T[], keyGetter: (t: T) => S): Map<S,T[]> => {
 };
 
 export const tick = (ps: particle[]) => collideAndDestroy(ps.map(move));
-
-export const applyNTimes = <T>(f: (a: T) => T) => (n: number) => (t: T): T => {
-    // console.log('Calling applyNTimes with',f,n,t)
-    // console.log(n)
-    if (n <= 0) {
-        // console.log('quick answer')
-        return t;
-    } else {
-        // console.log('recurse!')
-        return applyNTimes(f)(n-1)(f(t));
-    }
-};

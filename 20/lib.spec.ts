@@ -1,5 +1,7 @@
 import {stream} from 'parser-combinator';
-import { particle, particleParser, vec3, vec3Parser, fullInputParser, newLine, particleParserNL, indexOfMin, vecNorm, indexOfMinAcceleration, move, collideAndDestroy, applyNTimes, tick, vecAdd } from './lib';
+import { applyNTimes } from '../util/lib';
+import {collideAndDestroy, fullInputParser, indexOfMin, indexOfMinAcceleration
+    , move, newLine, particle, particleParser, particleParserNL, tick, vec3, vec3Parser, vecAdd, vecNorm } from './lib';
 
 const rawTestInputA =
 `p=<3,0,0>, v=<2,0,0>, a=<-1,0,0>
@@ -42,7 +44,7 @@ describe('Day 20', () => {
         it('two particles', () => {
             const ps: particle[] = fullInputParser.parse(stream.ofString(rawTestInputA)).value;
             expect(ps).toEqual(parsedTestInputA);
-        })
+        });
     });
     it('index of min', () => {
         expect(indexOfMin([2,7,54,-9,1,5])).toBe(3);
@@ -78,10 +80,5 @@ describe('Day 20', () => {
     it('Can add vectors', () => {
         const w = vecAdd([1,1,1],[-1,0,1]);
         expect(w).toEqual([0,1,2]);
-    })
-    it('Can repeat an action many times', () => {
-        const five = applyNTimes((n: number) => n + 1)(5)(0);
-        // console.log(five)
-        expect(five).toBe(5);
-    })
+    });
 });

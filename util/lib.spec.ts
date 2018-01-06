@@ -1,4 +1,4 @@
-import { chunk, map2, range } from './lib';
+import { applyNTimes, chunk, flatten, map2, range } from './lib';
 
 describe('Util', ()=> {
     describe('range', () => {
@@ -14,6 +14,22 @@ describe('Util', ()=> {
     describe('chunk',()=> {
         it('chunks', () => {
             expect(chunk(3)([1,2,3,4,5,6,7])).toEqual([[1,2,3],[4,5,6],[7]]);
+        });
+    });
+    describe('flatten', ()=> {
+        it('flatten', () => {
+            const raw = [[1,2,3],[1,2]];
+            expect(flatten(raw)).toEqual([1,2,3,1,2]);
+        });
+    });
+    describe('applyNTimes', () => {
+        it('Can repeat an action many times', () => {
+            const five = applyNTimes((n: number) => n + 1)(5)(0);
+            expect(five).toBe(5);
+        });
+        it('Can repeat an action many many times', () => {
+            const five = applyNTimes((n: number) => n + 1)(1e6)(0);
+            expect(five).toBe(1e6);
         });
     });
 });

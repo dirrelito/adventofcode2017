@@ -1,6 +1,6 @@
-import { chunk2D, flatten, FractalArtImage, FractalArtImageMapping,
-     parseStringMappings, rotate2DArrCW, Ruleset, unChunk2D, uniquesBy } from './lib';
 import { map2 } from '../util/lib';
+import { chunk2D, FractalArtImage, FractalArtImageMapping,
+     parseStringMappings, rotate2DArrCW, Ruleset, unChunk2D, uniquesBy } from './lib';
 
 const startInput = '.#./..#/###';
 
@@ -33,10 +33,6 @@ describe('Day 21', () => {
             expect(u).toEqual([1,4,2,5]);
             const u2 = uniquesBy((s: string) => s.length)(['apa','boll','röv']);
             expect(u2).toEqual(['apa','boll']);
-        });
-        it('flatten', () => {
-            const raw = [[1,2,3],[1,2]];
-            expect(flatten(raw)).toEqual([1,2,3,1,2]);
         });
         it('chunk2D', () => {
             const input = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]];
