@@ -1,5 +1,5 @@
 import { isUndefined } from 'util';
-import { applyNTimes, assertNever, flatten, some } from '../util/lib';
+import { applyNTimes, assertNever, flatten } from '../util/lib';
 
 type coordinate = [number,number];
 type nodeState = 'clean' | 'weakened' | 'infected' | 'flagged';
