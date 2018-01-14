@@ -26,7 +26,7 @@ const rawTestA =
 9/10
 `;
 
-fdescribe('Day 24', () => {
+describe('Day 24', () => {
     it('Filter movable node1', () => {
         const node = '1';
         const filteredEdges = edges.filter(e => nodeNeighborEdge(node)(e))[0];

@@ -6,7 +6,7 @@ export const assertNever = (x: never): never => {
     throw new Error('Unexpected object: ' + x);
 };
 
-export const sum = (a,b) => a + b;
+export const sum = (a: number,b: number) => a + b;
 
 export const map2 = <T,U>(callbak: map2Callback<T,U>) => (ts: T[][]) =>
         ts.map((row, rowI) => row.map((val,colI) => callbak(val,rowI,colI)));
