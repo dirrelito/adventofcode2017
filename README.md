@@ -1,6 +1,6 @@
 # About
 
-This is my repository for solutions for [hej](http://adventofcode.com/2017/)
+This is my repository for solutions for [AoC2017](http://adventofcode.com/2017/)
 
 I used the AoC challenge to improve on my Typescript skills. I strived for solutions that treated data as immutable, avoiding use of classes and attempting to write functional code. During the way I learned a few things:
 
